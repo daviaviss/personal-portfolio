@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
 ::selection {
   background-color: rgb(55 65 81);
   color: white;

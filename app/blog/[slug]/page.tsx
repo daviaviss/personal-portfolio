@@ -11,6 +11,7 @@ import { useParams } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { Copy, Check } from "lucide-react";
 import { CustomDock } from "@/components/CustomDock";
+import MouseGlow from "@/components/MouseGlow";
 import { motion } from "framer-motion";
 
 function CodeBlock({ language, code }: { language: string; code: string }) {
@@ -118,6 +119,7 @@ export default function BlogPost() {
 
   return (
     <>
+      <MouseGlow />
       <CustomDock />
       <main className="flex min-h-screen flex-col md:gap-8 gap-6 md:p-24 p-10 pb-24 md:pb-24 lg:w-7/12 sm:w-full mx-auto">
         <motion.div

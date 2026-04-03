@@ -9,7 +9,7 @@ Portfólio pessoal desenvolvido com Next.js 14, apresentando experiências, educ
 - **Blog dinâmico** — posts em markdown hospedados no GitHub, com suporte a PT/EN
 - **Syntax highlighting** — blocos de código com tema Nord e botão de copiar
 - **Dock de navegação** — links para redes sociais, tema e idioma
-- **Animações** — fade-in nas seções e meteoros de fundo com Framer Motion
+- **Animações** — fade-in nas seções, cursor customizado e glow interativo com Framer Motion
 - **Design responsivo** — adaptado para mobile e desktop
 
 ## Tecnologias
@@ -52,8 +52,9 @@ Acesse [http://localhost:3000](http://localhost:3000).
 │   ├── ContactMe.tsx           # Seção de contato
 │   ├── FadeIn.tsx              # Wrapper de animação de entrada
 │   ├── CustomDock.tsx          # Dock de navegação
-│   ├── magicui/dock.tsx        # Componente base do dock com magnify
-│   └── magicui/meteors.tsx     # Efeito de meteoros de fundo
+│   ├── CustomCursor.tsx        # Cursor customizado
+│   ├── MouseGlow.tsx           # Glow interativo que segue o mouse
+│   └── magicui/dock.tsx        # Componente base do dock com magnify
 └── context/
     └── LanguageContext.tsx     # Context de idioma (PT/EN)
 ```
