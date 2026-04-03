@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Yatharth Verma",
-  description: "Yatharth Verma's portfolio",
+  title: "daviaviss",
+  description: "Portfólio de Davi Augusto Vissotto — Desenvolvedor de Software",
 };
 
 export default function RootLayout({

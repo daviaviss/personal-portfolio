@@ -9,7 +9,6 @@ interface WorkExperienceItem {
   companyName: string;
   jobTitle: string;
   description: string[];
-  companyLink?: string;
 }
 
 const workExperienceData: Record<"pt" | "en", WorkExperienceItem[]> = {
@@ -52,16 +51,16 @@ const workExperienceData: Record<"pt" | "en", WorkExperienceItem[]> = {
     {
       startDate: "dez 2021",
       endDate: "fev 2022",
-      companyName: "InfinityWorks",
+      companyName: "InfityWorks",
       jobTitle: "Desenvolvedor de Software (Autônomo)",
       description: [
-        "Na InfinityWorks, atuei como desenvolvedor web freelance, criando websites e aplicativos personalizados para empresas locais. Trabalhei em colaboração com equipes de design e gestão para entregar soluções modernas alinhadas às necessidades dos clientes, aprimorando minhas habilidades em comunicação, trabalho em equipe e desenvolvimento web.",
+        "Na InfityWorks, atuei como desenvolvedor web freelance, criando websites e aplicativos personalizados para empresas locais. Trabalhei em colaboração com equipes de design e gestão para entregar soluções modernas alinhadas às necessidades dos clientes, aprimorando minhas habilidades em comunicação, trabalho em equipe e desenvolvimento web.",
       ],
     },
   ],
   en: [
     {
-      startDate: "Jul 2025",
+      startDate: "jul 2025",
       companyName: "CI&T",
       jobTitle: "Software Developer (Mid-level)",
       description: [
@@ -69,8 +68,8 @@ const workExperienceData: Record<"pt" | "en", WorkExperienceItem[]> = {
       ],
     },
     {
-      startDate: "Jan 2025",
-      endDate: "Jun 2025",
+      startDate: "jan 2025",
+      endDate: "jun 2025",
       companyName: "CI&T",
       jobTitle: "Software Developer (Junior)",
       description: [
@@ -78,8 +77,8 @@ const workExperienceData: Record<"pt" | "en", WorkExperienceItem[]> = {
       ],
     },
     {
-      startDate: "Feb 2023",
-      endDate: "Jan 2025",
+      startDate: "feb 2023",
+      endDate: "jan 2025",
       companyName: "Quality Digital",
       jobTitle: "Software Developer (Junior)",
       description: [
@@ -87,8 +86,8 @@ const workExperienceData: Record<"pt" | "en", WorkExperienceItem[]> = {
       ],
     },
     {
-      startDate: "Jul 2022",
-      endDate: "Feb 2023",
+      startDate: "jul 2022",
+      endDate: "feb 2023",
       companyName: "Quality Digital",
       jobTitle: "Software Developer (Intern)",
       description: [
@@ -96,12 +95,12 @@ const workExperienceData: Record<"pt" | "en", WorkExperienceItem[]> = {
       ],
     },
     {
-      startDate: "Dec 2021",
-      endDate: "Feb 2022",
-      companyName: "InfinityWorks",
+      startDate: "dec 2021",
+      endDate: "feb 2022",
+      companyName: "InfityWorks",
       jobTitle: "Software Developer (Freelance)",
       description: [
-        "At InfinityWorks, I worked as a freelance web developer, building custom websites and applications for local businesses. I collaborated with design and management teams to deliver modern solutions aligned with client needs, improving my communication, teamwork, and web development skills.",
+        "At InfityWorks, I worked as a freelance web developer, building custom websites and applications for local businesses. I collaborated with design and management teams to deliver modern solutions aligned with client needs, improving my communication, teamwork, and web development skills.",
       ],
     },
   ],
@@ -110,7 +109,7 @@ const workExperienceData: Record<"pt" | "en", WorkExperienceItem[]> = {
 const WorkExperience: React.FC = () => {
   const { lang } = useLanguage();
   const data = workExperienceData[lang];
-  const present = lang === "pt" ? "o momento" : "Present";
+  const present = lang === "pt" ? "o momento" : "present";
   const title = lang === "pt" ? "Experiência" : "Experience";
 
   return (
@@ -125,7 +124,7 @@ const WorkExperience: React.FC = () => {
           >
             <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
             <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-              {item.startDate} - {item.endDate || present}
+              {item.startDate.toLowerCase()} - {(item.endDate || present).toLowerCase()}
             </time>
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               {item.jobTitle} @ {item.companyName}
@@ -137,29 +136,6 @@ const WorkExperience: React.FC = () => {
                 ))}
               </ul>
             </div>
-            {item.companyLink && (
-              <a
-                href={item.companyLink}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-              >
-                {lang === "pt" ? "Saiba mais" : "Learn more"}{" "}
-                <svg
-                  className="w-3 h-3 ms-2 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            )}
           </li>
         ))}
       </ol>

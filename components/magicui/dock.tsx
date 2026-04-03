@@ -1,10 +1,9 @@
 "use client";
 
-import React, { PropsWithChildren, useRef } from "react";
+import React, { useRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import {
   motion,
-  MotionValue,
   useMotionValue,
   useSpring,
   useTransform,
@@ -25,7 +24,7 @@ const DEFAULT_MAGNIFICATION = 60;
 const DEFAULT_DISTANCE = 140;
 
 const dockVariants = cva(
-  "mx-auto w-max mt-8 h-[58px] p-2 flex gap-2 rounded-2xl shadow-md border border-slate-200 supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-md dark:border-slate-800 bg-white/10 dark:bg-black/10"
+  "mx-auto w-max mt-8 h-[58px] p-1 md:p-2 flex gap-0 md:gap-2 rounded-2xl shadow-md border border-slate-200 supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-md dark:border-slate-800 bg-white/10 dark:bg-black/10"
 );
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
@@ -97,7 +96,6 @@ export interface DockIconProps {
   mouseY?: any;
   className?: string;
   children?: React.ReactNode;
-  props?: PropsWithChildren;
   orientation?: "horizontal" | "vertical";
 }
 

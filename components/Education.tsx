@@ -30,15 +30,15 @@ const educationData: Record<"pt" | "en", EducationItem[]> = {
   ],
   en: [
     {
-      startDate: "Jun 2021",
-      endDate: "Dec 2026",
+      startDate: "jun 2021",
+      endDate: "dec 2026",
       institution: "Federal University of Santa Catarina",
       degree: "Information Systems",
       detail: "Bachelor's Degree",
     },
     {
-      startDate: "Feb 2018",
-      endDate: "Dec 2020",
+      startDate: "feb 2018",
+      endDate: "dec 2020",
       institution: "Federal University of Santa Catarina",
       degree: "Colégio de Aplicação",
       detail: "High School",
@@ -49,7 +49,7 @@ const educationData: Record<"pt" | "en", EducationItem[]> = {
 const Education: React.FC = () => {
   const { lang } = useLanguage();
   const data = educationData[lang];
-  const present = lang === "pt" ? "o momento" : "Present";
+  const present = lang === "pt" ? "o momento" : "present";
   const title = lang === "pt" ? "Educação" : "Education";
 
   return (
@@ -66,7 +66,7 @@ const Education: React.FC = () => {
           >
             <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
             <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-              {item.startDate} - {item.endDate || present}
+              {item.startDate.toLowerCase()} - {(item.endDate || present).toLowerCase()}
             </time>
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               {item.degree} @ {item.institution}

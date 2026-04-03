@@ -6,12 +6,12 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const content = {
   pt: {
-    greeting: "Olá! Meu nome é Davi Augusto.",
+    greeting: "Olá! Meu nome é Davi Augusto",
     description:
       "Possuo 23 anos e grande interesse por tecnologia desde cedo. Minha trajetória inclui participação em projetos com metodologias ágeis (como SCRUM/KANBAN) e foco em desenvolvimento front-end. Tenho experiência com diversas ferramentas e linguagens. Valorizo o trabalho em equipe e o aprendizado prático, buscando sempre evoluir com os desafios. Sou PCD, mas minha condição não exige adaptações no ambiente de trabalho. Meu objetivo é seguir aprendendo e contribuindo com projetos que gerem impacto positivo.",
   },
   en: {
-    greeting: "Hi! My name is Davi Augusto.",
+    greeting: "Hi! My name is Davi Augusto",
     description:
       "I'm 23 years old with a deep passion for technology from an early age. My career includes participation in projects using agile methodologies (SCRUM/KANBAN) with a focus on front-end development. I have experience with a wide range of tools and languages. I value teamwork and hands-on learning, always looking to grow through challenges. I'm a person with a disability, but my condition requires no workplace adaptations. My goal is to keep learning and contributing to projects that generate a positive impact.",
   },
