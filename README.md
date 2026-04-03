@@ -1,64 +1,79 @@
 # daviaviss — Portfolio
 
-Portfólio pessoal desenvolvido com Next.js 14, apresentando experiências, projetos, habilidades e formas de contato.
+Portfólio pessoal desenvolvido com Next.js 14, apresentando experiências, educação, habilidades, blog e formas de contato.
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-- **Suporte a PT/EN** — alternância de idioma via botão no dock
+- **PT/EN** — alternância de idioma via dock
 - **Dark/Light mode** — tema alternável com persistência
-- **Dock de navegação** — links para redes sociais e contato
+- **Blog dinâmico** — posts em markdown hospedados no GitHub, com suporte a PT/EN
+- **Syntax highlighting** — blocos de código com tema Nord e botão de copiar
+- **Dock de navegação** — links para redes sociais, tema e idioma
+- **Animações** — fade-in nas seções e meteoros de fundo com Framer Motion
 - **Design responsivo** — adaptado para mobile e desktop
-- **Animações** — efeito de meteoros e transições suaves com Framer Motion
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 - [Next.js 14](https://nextjs.org/)
-- [React 18](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
+- [Tailwind CSS](https://tailwindcss.com/) + [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin)
 - [Framer Motion](https://www.framer.com/motion/)
 - [Radix UI](https://www.radix-ui.com/)
-- [Lucide React](https://lucide.dev/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
+- [react-markdown](https://github.com/remarkjs/react-markdown) + [remark-gfm](https://github.com/remarkjs/remark-gfm)
+- [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
+- [gray-matter](https://github.com/jonschlinkert/gray-matter)
 
-## 🚀 Rodando localmente
-
-**Pré-requisitos:** Node.js 18+
+## Rodando localmente
 
 ```bash
-# Clone o repositório
 git clone https://github.com/daviaviss/personal-portfolio.git
 cd personal-portfolio
-
-# Instale as dependências
 npm install
-
-# Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-Acesse [http://localhost:3000](http://localhost:3000) no seu navegador.
+Acesse [http://localhost:3000](http://localhost:3000).
 
-## 📁 Estrutura
+## Estrutura
 
 ```
 ├── app/
-│   ├── layout.tsx        # Layout raiz e metadados
-│   ├── page.tsx          # Página principal
-│   └── providers.tsx     # Providers de tema e idioma
+│   ├── layout.tsx              # Layout raiz e metadados
+│   ├── page.tsx                # Página principal
+│   ├── providers.tsx           # Providers de tema e idioma
+│   └── blog/[slug]/page.tsx    # Página de leitura de post
 ├── components/
-│   ├── Intro.tsx         # Seção de apresentação
-│   ├── WorkExperience.tsx# Experiências profissionais
-│   ├── Education.tsx     # Formação acadêmica
-│   ├── Skills.tsx        # Habilidades técnicas
-│   ├── Projects.tsx      # Projetos em destaque
-│   ├── ContactMe.tsx     # Seção de contato
-│   └── CustomDock.tsx    # Dock de navegação
+│   ├── Intro.tsx               # Apresentação
+│   ├── WorkExperience.tsx      # Experiências profissionais
+│   ├── Education.tsx           # Formação acadêmica
+│   ├── Skills.tsx              # Habilidades técnicas
+│   ├── Blog.tsx                # Listagem de posts do blog
+│   ├── ContactMe.tsx           # Seção de contato
+│   ├── FadeIn.tsx              # Wrapper de animação de entrada
+│   ├── CustomDock.tsx          # Dock de navegação
+│   ├── magicui/dock.tsx        # Componente base do dock com magnify
+│   └── magicui/meteors.tsx     # Efeito de meteoros de fundo
 └── context/
-    └── LanguageContext.tsx # Context de idioma (PT/EN)
+    └── LanguageContext.tsx     # Context de idioma (PT/EN)
 ```
 
-## 📬 Contato
+## Blog
+
+Os posts são arquivos Markdown hospedados no repositório público [daviaviss/blog-posts](https://github.com/daviaviss/blog-posts). Cada post suporta versão PT (`slug.md`) e EN (`slug.en.md`).
+
+Frontmatter esperado:
+
+```md
+---
+title: Título do post
+description: Descrição curta
+date: 2024-01-01
+tags: [tag1, tag2]
+---
+```
+
+## Contato
 
 - **WhatsApp:** [+55 48 98461-6370](https://wa.me/5548984616370)
 - **Email:** [daviaugustovissotto@gmail.com](mailto:daviaugustovissotto@gmail.com)
