@@ -97,16 +97,19 @@ const DATA = {
 export function CustomDock() {
   const { resolvedTheme, setTheme } = useTheme();
   const { lang, setLang } = useLanguage();
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1050);
-    };
+    history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+
+    const handleResize = () => setIsMobile(window.innerWidth < 1050);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  if (isMobile === null) return null;
 
   return (
     <div

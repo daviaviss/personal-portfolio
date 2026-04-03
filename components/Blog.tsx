@@ -61,11 +61,11 @@ export default function Blog() {
   const { lang } = useLanguage();
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
-  const [visible, setVisible] = useState(PAGE_SIZE);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    setVisible(PAGE_SIZE);
+    setExpanded(false);
     fetchPosts(lang).then((p) => {
       setPosts(p);
       setLoading(false);
@@ -74,12 +74,11 @@ export default function Blog() {
 
   const readMore = lang === "pt" ? "Ler post" : "Read post";
   const noPostsMsg = lang === "pt" ? "Nenhum post ainda." : "No posts yet.";
-  const loadMoreLabel = lang === "pt" ? "Carregar mais" : "Load more";
+  const expandLabel = lang === "pt" ? "Expandir" : "Expand";
+  const collapseLabel = lang === "pt" ? "Recolher" : "Collapse";
 
-  const visiblePosts = posts.slice(0, visible);
-  const hasMore = visible < posts.length;
-  const hasLess = visible > PAGE_SIZE;
-  const loadLessLabel = lang === "pt" ? "Recolher" : "Collapse";
+  const visiblePosts = expanded ? posts : posts.slice(0, PAGE_SIZE);
+  const hasMore = posts.length > PAGE_SIZE;
 
   return (
     <div className="flex flex-col gap-4 w-full">
@@ -136,24 +135,16 @@ export default function Blog() {
             ))}
           </AnimatePresence>
 
-          <div className="flex justify-center gap-4">
-            {hasLess && (
+          {hasMore && (
+            <div className="flex justify-center">
               <button
-                onClick={() => setVisible((v) => v - PAGE_SIZE)}
+                onClick={() => setExpanded((e) => !e)}
                 className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
               >
-                ↑ {loadLessLabel}
+                {expanded ? `↑ ${collapseLabel}` : `↓ ${expandLabel}`}
               </button>
-            )}
-            {hasMore && (
-              <button
-                onClick={() => setVisible((v) => v + PAGE_SIZE)}
-                className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
-              >
-                {loadMoreLabel} ↓
-              </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       )}
     </div>
