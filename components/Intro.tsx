@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import ProfilePic from "@/app/images/davi.png";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -29,7 +30,11 @@ export default function Intro() {
           {t.description}
         </p>
       </div>
-      <div className="flex items-center justify-center md:mb-0">
+      <motion.div
+        className="flex items-center justify-center md:mb-0"
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+      >
         <Image
           src={ProfilePic}
           alt="Davi"
@@ -37,7 +42,7 @@ export default function Intro() {
           height={160}
           className="border-2 border-gray-100 rounded-full object-cover"
         />
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -9,7 +9,12 @@ export default function CustomCursor() {
   const [visible, setVisible] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [clicking, setClicking] = useState(false);
+  const [isTouch, setIsTouch] = useState<boolean | null>(null);
   const movedRef = useRef(false);
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia("(pointer: coarse)").matches);
+  }, []);
   const { resolvedTheme } = useTheme();
   const color = resolvedTheme === "dark" ? "#ffffff" : "#000000";
   const pathname = usePathname();
@@ -64,7 +69,7 @@ export default function CustomCursor() {
     };
   }, [x, y]);
 
-  if (!visible) return null;
+  if (isTouch === null || isTouch || !visible) return null;
 
   return (
     <motion.div

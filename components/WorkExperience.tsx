@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface WorkExperienceItem {
@@ -122,20 +123,27 @@ const WorkExperience: React.FC = () => {
             key={index}
             className={`mb-10 ms-4 ${index === data.length - 1 ? "mb-0" : ""}`}
           >
-            <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-            <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-              {item.startDate.toLowerCase()} - {(item.endDate || present).toLowerCase()}
-            </time>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              {item.jobTitle} @ {item.companyName}
-            </h3>
-            <div className="mb-4 text-base font-normal text-gray-700 dark:text-gray-400">
-              <ul>
-                {item.description.map((desc, i) => (
-                  <li key={i}>{desc}</li>
-                ))}
-              </ul>
-            </div>
+            <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700" />
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.45, delay: index * 0.08, ease: "easeOut" }}
+            >
+              <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                {item.startDate.toLowerCase()} - {(item.endDate || present).toLowerCase()}
+              </time>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                {item.jobTitle} @ {item.companyName}
+              </h3>
+              <div className="mb-4 text-base font-normal text-gray-700 dark:text-gray-400">
+                <ul>
+                  {item.description.map((desc, i) => (
+                    <li key={i}>{desc}</li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
           </li>
         ))}
       </ol>
