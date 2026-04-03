@@ -6,6 +6,7 @@ import Education from "@/components/Education";
 import Skills from "@/components/Skills";
 import Blog from "@/components/Blog";
 import ContactMe from "@/components/ContactMe";
+import FadeIn from "@/components/FadeIn";
 
 const Meteors = dynamic(() => import("@/components/magicui/meteors"), {
   ssr: false,
@@ -17,12 +18,12 @@ export default function Home() {
       <div className="fixed inset-0 pointer-events-none light-mode-fade-bottom dark:fade-bottom z-10 bg-white/10 dark:bg-black/10" />
       <CustomDock />
 
-      <Intro />
-      <WorkExperience />
-      <Education />
-      <Skills />
-      <Blog />
-      <ContactMe />
+      <FadeIn delay={0}><Intro /></FadeIn>
+      <FadeIn delay={0.15}><WorkExperience /></FadeIn>
+      <FadeIn delay={0.25}><Education /></FadeIn>
+      <FadeIn delay={0.35}><Skills /></FadeIn>
+      <FadeIn delay={0.45}><Blog /></FadeIn>
+      <FadeIn delay={0.55}><ContactMe /></FadeIn>
       <Meteors number={20} />
     </main>
   );

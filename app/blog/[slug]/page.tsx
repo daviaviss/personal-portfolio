@@ -11,6 +11,7 @@ import { useParams } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { Copy, Check } from "lucide-react";
 import { CustomDock } from "@/components/CustomDock";
+import { motion } from "framer-motion";
 
 function CodeBlock({ language, code }: { language: string; code: string }) {
   const [copied, setCopied] = useState(false);
@@ -119,6 +120,12 @@ export default function BlogPost() {
     <>
       <CustomDock />
       <main className="flex min-h-screen flex-col md:gap-8 gap-6 md:p-24 p-10 pb-24 md:pb-24 lg:w-7/12 sm:w-full mx-auto">
+        <motion.div
+          className="flex flex-col md:gap-8 gap-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
         <Link href="/" className="text-gray-700 dark:text-gray-300 text-sm">{back}</Link>
 
         <div className="flex flex-col gap-3">
@@ -190,6 +197,7 @@ export default function BlogPost() {
             {post!.content}
           </ReactMarkdown>
         </article>
+        </motion.div>
       </main>
     </>
   );

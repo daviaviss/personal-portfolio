@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { useLanguage } from "@/context/LanguageContext";
+import { motion, AnimatePresence } from "framer-motion";import { useLanguage } from "@/context/LanguageContext";
 import matter from "gray-matter";
 
 interface Post {
@@ -92,40 +92,48 @@ export default function Blog() {
         <p className="text-sm text-gray-500 dark:text-gray-400">{noPostsMsg}</p>
       ) : (
         <div className="flex flex-col gap-4">
-          {visiblePosts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="flex flex-col gap-2 border rounded-md p-4 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <h2 className="text-base font-semibold text-gray-900 dark:text-white">
-                  {post.title}
-                </h2>
-                {post.date && (
-                  <span className="text-xs text-gray-400 shrink-0">{post.date}</span>
-                )}
-              </div>
-              {post.description && (
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {post.description}
-                </p>
-              )}
-              <div className="flex items-center justify-between mt-1">
-                <div className="flex flex-wrap gap-1">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <span className="text-xs text-gray-700 dark:text-gray-300">{readMore} →</span>
-              </div>
-            </Link>
-          ))}
+          <AnimatePresence initial={false}>
+            {visiblePosts.map((post) => (
+              <motion.div
+                key={post.slug}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+              >
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="flex flex-col gap-2 border rounded-md p-4 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <h2 className="text-base font-semibold text-gray-900 dark:text-white">
+                      {post.title}
+                    </h2>
+                    {post.date && (
+                      <span className="text-xs text-gray-400 shrink-0">{post.date}</span>
+                    )}
+                  </div>
+                  {post.description && (
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      {post.description}
+                    </p>
+                  )}
+                  <div className="flex flex-col gap-3 mt-2">
+                    <div className="flex flex-wrap gap-1">
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="text-xs text-gray-700 dark:text-gray-300 sm:self-end">{readMore} →</span>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </AnimatePresence>
 
           <div className="flex justify-center gap-4">
             {hasLess && (
