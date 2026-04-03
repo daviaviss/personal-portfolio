@@ -23,7 +23,7 @@ const skillsData = [
   "Jest",
 ];
 
-function Skills() {
+export const Skills = () => {
   const { lang } = useLanguage();
   const title = lang === "pt" ? "Habilidades" : "Skills";
 
@@ -48,4 +48,3 @@ function Skills() {
   );
 }
 
-export default Skills;

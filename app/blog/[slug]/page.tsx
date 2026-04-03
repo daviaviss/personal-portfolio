@@ -11,7 +11,7 @@ import { useParams } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { Copy, Check } from "lucide-react";
 import { CustomDock } from "@/components/CustomDock";
-import MouseGlow from "@/components/MouseGlow";
+import { MouseGlow } from "@/components/MouseGlow";
 import { motion } from "framer-motion";
 
 function CodeBlock({ language, code }: { language: string; code: string }) {

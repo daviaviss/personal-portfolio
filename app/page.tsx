@@ -1,10 +1,11 @@
 import dynamic from "next/dynamic";
 import { CustomDock } from "@/components/CustomDock";
-import PageContent from "@/components/PageContent";
+import { PageContent } from "@/components/PageContent";
 
-const MouseGlow = dynamic(() => import("@/components/MouseGlow"), {
-  ssr: false,
-});
+const MouseGlow = dynamic(
+  () => import("@/components/MouseGlow").then((m) => ({ default: m.MouseGlow })),
+  { ssr: false }
+);
 
 export default function Home() {
   return (

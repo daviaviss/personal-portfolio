@@ -57,7 +57,7 @@ async function fetchPosts(lang: "pt" | "en"): Promise<Post[]> {
 
 const PAGE_SIZE = 3;
 
-export default function Blog() {
+export const Blog = () => {
   const { lang } = useLanguage();
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);

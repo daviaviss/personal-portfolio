@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Lora } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import CustomCursor from "@/components/CustomCursor";
+import { CustomCursor } from "@/components/CustomCursor";
 
 const inter = Inter({
   subsets: ["latin"],

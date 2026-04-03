@@ -5,7 +5,7 @@ import { motion, useMotionValue } from "framer-motion";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 
-export default function CustomCursor() {
+export const CustomCursor = () => {
   const [visible, setVisible] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [clicking, setClicking] = useState(false);

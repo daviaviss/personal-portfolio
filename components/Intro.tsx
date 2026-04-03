@@ -18,7 +18,7 @@ const content = {
   },
 };
 
-export default function Intro() {
+export const Intro = () => {
   const { lang } = useLanguage();
   const t = content[lang];
 

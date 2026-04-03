@@ -47,7 +47,7 @@ const educationData: Record<"pt" | "en", EducationItem[]> = {
   ],
 };
 
-const Education: React.FC = () => {
+export const Education: React.FC = () => {
   const { lang } = useLanguage();
   const data = educationData[lang];
   const present = lang === "pt" ? "o momento" : "present";
@@ -87,4 +87,3 @@ const Education: React.FC = () => {
   );
 };
 
-export default Education;

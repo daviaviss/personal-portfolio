@@ -14,7 +14,7 @@ const content = {
   },
 };
 
-function ContactMe() {
+export const ContactMe = () => {
   const { lang } = useLanguage();
   const t = content[lang];
 
@@ -26,4 +26,3 @@ function ContactMe() {
   );
 }
 
-export default ContactMe;

@@ -107,7 +107,7 @@ const workExperienceData: Record<"pt" | "en", WorkExperienceItem[]> = {
   ],
 };
 
-const WorkExperience: React.FC = () => {
+export const WorkExperience: React.FC = () => {
   const { lang } = useLanguage();
   const data = workExperienceData[lang];
   const present = lang === "pt" ? "o momento" : "present";
@@ -151,4 +151,3 @@ const WorkExperience: React.FC = () => {
   );
 };
 
-export default WorkExperience;

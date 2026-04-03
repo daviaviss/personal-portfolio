@@ -7,7 +7,7 @@ import {
   useMotionTemplate,
 } from "framer-motion";
 
-export default function MouseGlow() {
+export const MouseGlow = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const [visible, setVisible] = useState(false);
