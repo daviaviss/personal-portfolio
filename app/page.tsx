@@ -1,19 +1,35 @@
-import dynamic from "next/dynamic";
-import { CustomDock } from "@/components/CustomDock";
-import { PageContent } from "@/components/PageContent";
-
-const MouseGlow = dynamic(
-  () => import("@/components/MouseGlow").then((m) => ({ default: m.MouseGlow })),
-  { ssr: false }
-);
+import { LangProvider } from "@/hooks/useLang";
+import { Nav } from "@/components/nav/Nav";
+import { Hero } from "@/components/sections/Hero";
+import { Blog } from "@/components/sections/Blog";
+import { Experience } from "@/components/sections/Experience";
+import { About } from "@/components/sections/About";
+import { Contact } from "@/components/sections/Contact";
+import { StatusLine } from "@/components/ui/StatusLine";
+import { Cursor } from "@/components/ui/Cursor";
+import { CommandPalette } from "@/components/ui/CommandPalette";
+import { Divider } from "@/components/ui/Divider";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col md:gap-12 gap-8 md:p-24 p-10 pb-24 md:pb-24 relative overflow-hidden lg:w-7/12 sm:w-full mx-auto">
-      <MouseGlow />
-      <div className="fixed inset-0 pointer-events-none light-mode-fade-bottom dark:fade-bottom z-10 bg-white/10 dark:bg-black/10" />
-      <CustomDock />
-      <PageContent />
-    </main>
+    <LangProvider>
+      <Cursor />
+      <CommandPalette />
+      <Nav />
+
+      <main style={{ paddingBottom: 56 }}>
+        <Hero />
+        <Divider />
+        <About />
+        <Divider />
+        <Experience />
+        <Divider />
+        <Blog />
+        <Divider />
+        <Contact />
+      </main>
+
+      <StatusLine />
+    </LangProvider>
   );
 }
