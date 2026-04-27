@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "daviaviss — dev & entusiasta",
+  title: "daviaviss",
   description: "construo interfaces no frontend — next, react, react native.",
   openGraph: {
     title: "daviaviss",
