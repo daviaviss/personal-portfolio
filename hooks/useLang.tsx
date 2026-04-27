@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, use, useState, type ReactNode } from "react";
 
 export type Lang = "pt" | "en";
 
@@ -25,10 +25,10 @@ export function LangProvider({ children }: { children: ReactNode }) {
     });
 
   return (
-    <LangContext.Provider value={{ lang, toggle }}>
+    <LangContext value={{ lang, toggle }}>
       {children}
-    </LangContext.Provider>
+    </LangContext>
   );
 }
 
-export const useLang = () => useContext(LangContext);
+export const useLang = () => use(LangContext);

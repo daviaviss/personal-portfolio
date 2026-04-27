@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/Button";
 import { useLang } from "@/hooks/useLang";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
+const YEAR = new Date().getFullYear();
+
 export function Hero() {
   const { lang } = useLang();
   const isMobile = useIsMobile();
@@ -28,8 +30,8 @@ export function Hero() {
   const t = {
     badge:
       lang === "pt"
-        ? `disponível para projetos — ${new Date().getFullYear()}`
-        : `available for projects — ${new Date().getFullYear()}`,
+        ? `disponível para projetos — ${YEAR}`
+        : `available for projects — ${YEAR}`,
     lead1:
       lang === "pt"
         ? "construo interfaces impactantes —"
@@ -310,7 +312,7 @@ export function Hero() {
           aria-hidden
           style={{
             position: "absolute",
-            bottom: 40,
+            bottom: 20,
             left: "clamp(24px, 5vw, 48px)",
             fontFamily: "var(--font-mono)",
             fontSize: "var(--fs-micro)",

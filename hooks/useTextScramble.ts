@@ -6,8 +6,7 @@ const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#
 
 export function useTextScramble(text: string, trigger: boolean) {
   const [display, setDisplay] = useState(text);
-  const frame = useRef(0);
-  const raf = useRef<number>(0);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
     if (!trigger) return;
@@ -15,7 +14,7 @@ export function useTextScramble(text: string, trigger: boolean) {
     let iteration = 0;
     const totalFrames = text.length * 3;
 
-    cancelAnimationFrame(raf.current);
+    cancelAnimationFrame(rafRef.current);
 
     const update = () => {
       const resolved = Math.floor(iteration / 3);
@@ -32,16 +31,15 @@ export function useTextScramble(text: string, trigger: boolean) {
       iteration++;
 
       if (iteration < totalFrames + text.length) {
-        raf.current = requestAnimationFrame(update);
-        frame.current = raf.current;
+        rafRef.current = requestAnimationFrame(update);
       } else {
         setDisplay(text);
       }
     };
 
-    raf.current = requestAnimationFrame(update);
+    rafRef.current = requestAnimationFrame(update);
 
-    return () => cancelAnimationFrame(raf.current);
+    return () => cancelAnimationFrame(rafRef.current);
   }, [trigger, text]);
 
   return display;
