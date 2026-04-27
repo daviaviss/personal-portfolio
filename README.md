@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# daviaviss.com
+
+Personal portfolio with bilingual support, scroll animations, a custom cursor, interactive background, and a command palette — built with Next.js 16 and TypeScript.
+
+---
+
+## Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Language | TypeScript 5 |
+| Styling | Tailwind CSS 4 + CSS Custom Properties |
+| Content | Markdown via GitHub API + `gray-matter` |
+| Fonts | Instrument Serif · IBM Plex Mono · IBM Plex Sans |
+| Deploy | Vercel |
+
+---
+
+## Features
+
+- **Bilingual** — Portuguese / English with `localStorage` persistence
+- **Dark & light mode** — full design token system via CSS variables
+- **Scroll animations** — `IntersectionObserver`-based reveal + timeline progress
+- **Text scramble** — character-by-character animated reveal on section titles
+- **Command palette** — `Cmd+K` keyboard-driven navigation
+- **Custom cursor** — warm-toned SVG cursor (desktop only)
+- **Animated background** — interactive grid sparks synced with scroll
+- **Blog** — posts fetched from [`daviaviss/blog-posts`](https://github.com/daviaviss/blog-posts) with syntax highlighting
+
+---
+
+## Project Structure
+
+```
+├── app/
+│   ├── page.tsx              # Home (all sections)
+│   ├── layout.tsx            # Root layout + metadata
+│   ├── globals.css           # Design tokens & global styles
+│   └── blog/[slug]/          # Dynamic blog post pages
+├── components/
+│   ├── sections/             # Hero, About, Experience, Blog, Contact
+│   ├── nav/                  # Navigation bar
+│   └── ui/                   # Button, CommandPalette, Cursor, StatusLine, Divider
+├── hooks/
+│   ├── useLang.tsx           # Language context
+│   ├── useScrollReveal.ts    # Scroll-triggered animations
+│   ├── useTextScramble.ts    # Text scramble effect
+│   └── useIsMobile.ts        # Viewport detection
+└── public/assets/            # Images, video, icons
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+```bash
+npm run dev      # Development server with Turbopack
+npm run build    # Production build
+npm run start    # Start production server
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design System
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All visual tokens live in `app/globals.css` as CSS custom properties:
 
-## Deploy on Vercel
+- **Colors** — semantic tokens for both dark and light modes (espresso scale, sienna accent, cream neutrals)
+- **Typography** — fluid scale from `11px` (micro) to `220px` (display) using `clamp()`
+- **Spacing** — 4px base unit, 4px → 128px scale
+- **Motion** — easing functions (`ease-out`, `spring`, `pop`) and durations (140ms → 700ms)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Made by [Davi Augusto Vissotto](https://github.com/daviaviss)
